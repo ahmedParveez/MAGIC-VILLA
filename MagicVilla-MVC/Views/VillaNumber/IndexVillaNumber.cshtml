@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MagicVilla_MVC.Models.DTOs.Villa_Number_DTOs.VillaNumberDTO>
+
+<br />
+<div class="container p-4 border">
+    <div class="col">
+        <h1 class="text-primary" style="text-transform:uppercase">Villa Number List</h1>
+    </div>
+    <div class="col text-end pt-1">
+        <a asp-controller="VillaNumber" asp-action="CreateVillaNumber" class="btn btn-outline-primary"><i class="bi bi-plus-square-fill"></i> &nbsp; ADD Number</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Villa Name
+                </th>
+                <th>
+                    Villa Number
+                </th>
+                <th>
+                    Villa Id
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @*V have already extracted the data inside the '@model' in the beginning*@
+            @foreach (var item in Model) @*We can access that model by using 'Model'*@
+            {
+                <tr>
+                    <td>@item.Villa.Name</td>
+                    <td>@item.villaNo</td>
+                    <td>@item.VillaID</td>
+                    <td>
+                        <a asp-controller="VillaNumber" asp-action="UpdateVillaNumber" asp-route-villaNo="@item.villaNo" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                        <a asp-controller="VillaNumber" asp-action="DeleteVillaNumber" asp-route-villaNo="@item.villaNo" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
